@@ -1,30 +1,21 @@
-﻿using CsvHelper;
-using IndianStateCensus.POCO;
+﻿using IndianStateCensusAnalyser.DTO;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Text;
 
-namespace IndianStateCensus
+namespace IndianStateCensusAnalyser
 {
     public class CensusAnalyser
     {
-       public enum Country
+        public enum Country
         {
-            INDIA,US,BRAZIL
-       }
+            INDIA, US, BRAZIL
+        }
         Dictionary<string, CensusDTO> dataMap;
-        public Dictionary<string , CensusDTO> LoadCensusData(Country country,string csvFilePath,string dataHeaders)
+        public Dictionary<string, CensusDTO> LoadCensusData(string csvFilePath, Country country, string dataHeaders)
         {
             dataMap = new CSVAdapterFactory().LoadCsvData(country, csvFilePath, dataHeaders);
             return dataMap;
-        }
-
-        internal Dictionary<string, CensusDTO> LoadCensusData(string csvFilePath, string dataHeaders)
-        {
-            throw new NotImplementedException();
         }
     }
 }

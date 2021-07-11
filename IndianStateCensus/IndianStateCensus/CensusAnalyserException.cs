@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IndianStateAdapter
+namespace IndianStateCensusAnalyser
 {
-    public class CensusAnalyserException: Exception
+    public class CensusAnalyserException : Exception
     {
         public enum ExceptionType
         {
-            FILE_NOT_FOUND,INVALID_FILE_TYPE,INCORRECT_HEADER,INCORRECT_DELIMITER,NO_SUCH_COUNTRY
+            FILE_NOT_FOUND,
+            INVALID_FILE_TYPE,
+            INCORRECT_DELIMITER,
+            INCORRECT_HEADER,
+            NO_SUCH_COUNTRY
         }
-        public ExceptionType etype;
-        public CensusAnalyserException(string message, ExceptionType exceptionType):base(message)
+        public ExceptionType eType;
+        public CensusAnalyserException(string message, ExceptionType exceptionType) : base(message)
         {
-            this.etype = exceptionType;
+            this.eType = exceptionType;
         }
     }
 }

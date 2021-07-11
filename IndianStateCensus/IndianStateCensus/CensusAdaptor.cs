@@ -1,28 +1,27 @@
-﻿using IndianStateAdapter;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CensusAnalyser
+namespace IndianStateCensusAnalyser
 {
-    public abstract class CensusAdaptor
+    public class CensusAdapter
     {
-        protected string[] GetCensusData(string csvFilePath,string dataHeaders)
+        protected string[] GetCensusData(string csvFilePath, string dataHeaders)
         {
             string[] censusData;
-            if(!File.Exists(csvFilePath))
+            if (!File.Exists(csvFilePath))
             {
-                throw new CensusAnalyserException("file not found", CensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+                throw new CensusAnalyserException("File Not Found", CensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
             }
-            if(Path.GetExtension(csvFilePath) != "csv")
+            if (Path.GetExtension(csvFilePath) != ".csv")
             {
-                throw new CensusAnalyserException("Invalid file type", CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE);
+                throw new CensusAnalyserException("Invalid File Type", CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE);
             }
             censusData = File.ReadAllLines(csvFilePath);
-            if(censusData[0] != dataHeaders)
+            if (censusData[0] != dataHeaders)
             {
-                throw new CensusAnalyserException("incorrect header in data", CensusAnalyserException.ExceptionType.INCORRECT_HEADER);
+                throw new CensusAnalyserException("Incorrect header in Data", CensusAnalyserException.ExceptionType.INCORRECT_HEADER);
             }
             return censusData;
         }

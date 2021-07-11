@@ -1,8 +1,9 @@
-﻿using System;
+﻿using IndianStateCensusAnalyser.POCO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IndianStateCensus.POCO
+namespace IndianStateCensusAnalyser.DTO
 {
     public class CensusDTO
     {
@@ -16,37 +17,26 @@ namespace IndianStateCensus.POCO
         public long density;
         public long housingUnits;
         public double totalArea;
-        public double WaterArea;
+        public double waterArea;
         public double landArea;
         public double populationDensity;
         public double housingDensity;
 
-        public CensusDTO(StateCodeDAO stateCodeDAO)
+        public CensusDTO(StateCodeDAO stateCodeDao)
         {
-            this.serialNumber = stateCodeDAO.serialNumber;
-            this.stateName = stateCodeDAO.stateName;
-            this.tin = stateCodeDAO.tin;
-            this.stateCode = stateCodeDAO.stateCode;
+            this.serialNumber = stateCodeDao.serialNumber;
+            this.stateName = stateCodeDao.stateName;
+            this.tin = stateCodeDao.tin;
+            this.stateCode = stateCodeDao.stateCode;
         }
-        public CensusDTO(CensusDataDAO censusDataDAO)
-        {
-            this.state = censusDataDAO.state;
-            this.population = censusDataDAO.population;
-            this.area = censusDataDAO.area;
-            this.density = censusDataDAO.density;
-        }
-       /* public CensusDTO(USCensusDAO usCensusDAO)
-        {
-            this.stateCode = usCensusDAO.stateCode;
-            this.stateName = usCensusDAO.stateName;
-            this.population = usCensusDAO.Population;            
-            this.housingUnits = usCensusDAO.housingUnits;
-            this.totalArea = usCensusDAO.totalArea;
-            this.WaterArea = usCensusDAO.WaterArea;
-            this.landArea = usCensusDAO.landArea;
-            this.populationDensity = usCensusDAO.populationDensity;
-            this.housingDensity = usCensusDAO.housingDensity;
 
-        }*/
+        public CensusDTO(CensusDataDAO censusDataDao)
+        {
+            this.state = censusDataDao.state;
+            this.population = censusDataDao.population;
+            this.area = censusDataDao.area;
+            this.density = censusDataDao.density;
+        }
+
     }
 }

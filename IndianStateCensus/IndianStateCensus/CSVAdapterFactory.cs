@@ -1,23 +1,20 @@
-﻿using IndianStateAdapter;
-using IndianStateCensus.POCO;
+﻿using IndianStateCensusAnalyser.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IndianStateCensus 
+namespace IndianStateCensusAnalyser
 {
     public class CSVAdapterFactory
     {
-        public Dictionary<string , CensusDTO>LoadCsvData(CensusAnalyser.Country country,string csvFilePath,string dataHeaders)
+        public Dictionary<string, CensusDTO> LoadCsvData(CensusAnalyser.Country country, string csvFilePath, string dataHeaders)
         {
-            switch(country)
+            switch (country)
             {
                 case (CensusAnalyser.Country.INDIA):
-                    return new IndianStateAdapter.IndianCensusAdapter().LoadCensusData(csvFilePath, dataHeaders);
-                //case (CensusAnalyser.Country.US):
-                //    return new USCensusAdaptor().LoadUSCensusData(csvFilePath, dataHeaders);
+                    return new IndianCensusAdapter().LoadCensusData(csvFilePath, dataHeaders);
                 default:
-                    throw new CensusAnalyserException("no such country", CensusAnalyserException.ExceptionType.NO_SUCH_COUNTRY);
+                    throw new CensusAnalyserException("No Such Country", CensusAnalyserException.ExceptionType.NO_SUCH_COUNTRY);
             }
         }
     }
